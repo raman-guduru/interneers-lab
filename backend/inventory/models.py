@@ -1,14 +1,14 @@
-from django.db import models
-from django.core.validators import MinValueValidator
+from mongoengine import *
 
-# Create your models here.
-class Product(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(null=True, blank=True)
-    category = models.CharField(max_length=255)
-    brand = models.CharField(max_length=255,default="Generic")
-    price = models.DecimalField(max_digits=10, decimal_places=2,validators=[MinValueValidator(0)])
-    quantity = models.IntegerField(validators=[MinValueValidator(0)])
+
+# Create your model here.
+class Product(Document):
+    name = StringField(max_length=255)
+    description = StringField(null=True, blank=True)
+    category = StringField(max_length=255)
+    brand = StringField(max_length=255,default="Generic")
+    price = DecimalField(min_value=0,max_digits=10, precision=2)
+    quantity = IntField(min_value=0)
 
     def __str__(self):
         return self.name
