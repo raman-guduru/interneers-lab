@@ -6,6 +6,6 @@ def temp(request):
     return HttpResponse("Inside inventory")
 
 urlpatterns = [
-    path('', views.ProductListAndCreate.as_view()),
-    path('<int:pk>/', views.ProductRUD.as_view()),
+    path('', views.ProductLC),
+    path('<str:pk>/', views.ProductRUD),
 ]
