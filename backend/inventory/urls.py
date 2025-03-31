@@ -1,11 +1,14 @@
 from django.urls import path,include
 from django.http import HttpResponse
+
 from . import views
 
-def temp(request):
-    return HttpResponse("Inside inventory")
 
 urlpatterns = [
-    path('', views.ProductLC),
-    path('<str:pk>/', views.ProductRUD),
+    path('products', views.ProductLC),
+    path('products/<str:pk>', views.ProductRUD),
+    path('categories', views.CategoryLC),
+    path('categories/<str:pk>', views.CategoryRUD),
+    path('categories/<str:pk>/products', views.CategoryListProd),
+    path('categories/<str:pk>/products/<str:ppk>', views.CategoryAddDelProd),
 ]
