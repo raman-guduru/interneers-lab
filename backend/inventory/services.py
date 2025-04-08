@@ -90,15 +90,24 @@ class CategoryService():
             raise ValidationError(e)
         
     def list_prod(rep,pk):
-        res = rep.list_prod(pk)
-        ser = ProductSerializer(res,many=True)
-        return ser.data
+        try:
+            res = rep.list_prod(pk)
+            ser = ProductSerializer(res,many=True)
+            return ser.data
+        except Exception as e:
+            raise ValidationError(e)
     
     def add_prod(rep,pk,ppk):
-        prod = ProductRepository().get(ppk)
-        rep.add_prod(pk,prod)
+        try:
+            prod = ProductRepository().get(ppk)
+            rep.add_prod(pk,prod)
+        except Exception as e:
+            raise ValidationError(e)
             
     def del_prod(rep,pk,ppk):
-        prod = ProductRepository().get(ppk)
-        rep.del_prod(pk,prod)
+        try:
+            prod = ProductRepository().get(ppk)
+            rep.del_prod(pk,prod)
+        except Exception as e:
+            raise ValidationError(e)
         

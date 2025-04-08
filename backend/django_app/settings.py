@@ -81,8 +81,12 @@ WSGI_APPLICATION = "django_app.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
-import mongoengine
-mongoengine.connect("mongodb_data")
+import mongoengine,sys
+
+if 'test' in sys.argv:
+    mongoengine.connect(db='data-test')
+else:
+    mongoengine.connect(db='data-default')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

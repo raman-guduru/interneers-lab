@@ -15,4 +15,4 @@ class Product(Document):
 class Category(Document):
     name = StringField(max_length=255)
     description = StringField(null=True, blank=True)
-    products = ListField(LazyReferenceField('Product',reverse_delete_rule=PULL))
+    products = ListField(ReferenceField('Product',reverse_delete_rule=PULL))
