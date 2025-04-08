@@ -25,7 +25,7 @@ def ProductLC(request):
         except ValidationError as e:
             return Response(e.detail,status='400')
             
-@api_view(["GET","PUT","DELETE"])
+@api_view(["GET","PATCH","DELETE"])
 def ProductRUD(request,pk):
     rep = ProductRepository()
     if request.method == "GET":
@@ -64,7 +64,7 @@ def CategoryLC(request):
         except ValidationError as e:
             return Response(e.detail,status='400')
             
-@api_view(["GET","PUT","DELETE"])
+@api_view(["GET","PATCH","DELETE"])
 def CategoryRUD(request,pk):
     rep = CategoryRepository()
     if request.method == "GET":
@@ -103,10 +103,10 @@ def CategoryAddDelProd(request,pk,ppk):
             res = CategoryService.add_prod(rep,pk,ppk)
             return Response(data=res,status='201')
         except ValidationError as e:
-            return Response(e.detail,status='404')
+            return Response(e.detail,status='400')
     else:
         try:
             res = CategoryService.del_prod(rep,pk,ppk)
             return Response(data=res,status='204')
         except ValidationError as e:
-            return Response(e.detail,status='404')
+            return Response(e.detail,status='400')
