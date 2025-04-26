@@ -13,18 +13,22 @@ function ProductDetail({ product }: Props) {
           <span>Name</span>
           <p>{product.name}</p>
         </div>
+        <hr />
         <div className="row">
           <span>Brand</span>
           <p>{product.brand}</p>
         </div>
+        <hr />
         <div>
           <span>Description</span>
           <p>{product.description ? product.description : "N/A"}</p>
         </div>
+        <hr />
         <div className="row">
           <span>Price</span>
           <p>{product.price ? product.price : "N/A"}</p>
         </div>
+        <hr />
         <div className="row">
           <span>Quantity</span>
           <p>{product.quantity ? product.quantity : "N/A"}</p>

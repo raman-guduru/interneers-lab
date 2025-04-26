@@ -11,6 +11,7 @@ function ProductsPage() {
   const url = "http://localhost:8000/inventory/products";
   const fetchData = async () => {
     setLoading(true);
+    // await new Promise((resolve) => setTimeout(resolve, 5000));
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -49,7 +50,7 @@ function ProductsPage() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <span className="loader"></span>;
   }
 
   if (error) {
@@ -63,7 +64,7 @@ function ProductsPage() {
           <>
             <h2>Products</h2>
             <button aria-label="add product" onClick={() => setStatus("form")}>
-              <p className="fa-solid fa-plus"></p> Product
+              <p className="fa-solid fa-plus" aria-hidden="true"></p> Product
             </button>
           </>
         ) : (

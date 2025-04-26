@@ -20,9 +20,11 @@ function Layout() {
   return (
     <>
       <nav>
-        <Link to="/" className="link" id="main-link">
-          INVENTORY
-        </Link>
+        <div>
+          <Link to="/" className="link" id="main-link">
+            INVENTORY
+          </Link>
+        </div>
         <div>
           <Link to="/products" className="link">
             Products
@@ -40,6 +42,9 @@ function Home() {
   return (
     <div>
       <h2>Home</h2>
+      <Link to="/products" className="link">
+        <button>Products</button>
+      </Link>
     </div>
   );
 }

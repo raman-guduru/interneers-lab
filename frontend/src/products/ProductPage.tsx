@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Product } from "./Product";
 import ProductDetail from "./ProductDetail";
 import ProductForm from "./ProductForm";
+import Categories from "./Categories";
 import { Params, useParams } from "react-router-dom";
 
 function ProductPage() {
@@ -36,7 +37,7 @@ function ProductPage() {
     setStatus("detail");
   }
   if (loading) {
-    return <div>Loading...</div>;
+    return <span className="loader"></span>;
   }
 
   if (error) {
@@ -48,9 +49,11 @@ function ProductPage() {
       return (
         <>
           <ProductDetail product={data} />
-          <button onClick={() => setStatus("form")}>
+          <button onClick={() => setStatus("form")} aria-label="edit">
             <p className="fa-solid fa-edit fa-lg"></p>
           </button>
+          <br />
+          <Categories product={data} />
         </>
       );
     } else if (status === "form") {
