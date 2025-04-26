@@ -78,3 +78,7 @@ class CategoryRepository():
                 ins.modify(pull__products=prod)
         except Category.DoesNotExist:
             raise Exception("Category not found")
+        
+    def has_prod(self,prod):
+        return Category.objects(products__in = [prod])
+        

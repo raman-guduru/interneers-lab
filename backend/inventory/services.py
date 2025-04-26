@@ -111,3 +111,9 @@ class CategoryService():
         except Exception as e:
             raise ValidationError(e)
         
+    def has_prod(rep,pk):
+        product = ProductRepository().get(pk)
+        res = rep.has_prod(product)
+        ser = CategorySerializer(res,many=True)
+        return ser.data
+        

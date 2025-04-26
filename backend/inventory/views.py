@@ -110,3 +110,12 @@ def CategoryAddDelProd(request,pk,ppk):
             return Response(data=res,status='204')
         except ValidationError as e:
             return Response(e.detail,status='400')
+        
+@api_view(["GET"])
+def ProductListCategory(request,pk):
+    rep = CategoryRepository()
+    try:
+        res = CategoryService.has_prod(rep,pk)
+        return Response(data=res,status='200')
+    except ValidationError as e:
+        return Response(e.detail,status='404')
