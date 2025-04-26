@@ -31,8 +31,8 @@ function ProductPage() {
   useEffect(() => {
     fetchData(params);
   }, [params]);
-  async function handleChange() {
-    fetchData(params);
+  async function handleChange(product: Product) {
+    setData(product);
     setStatus("detail");
   }
   if (loading) {
@@ -58,7 +58,11 @@ function ProductPage() {
         <>
           <h2>Edit Product</h2>
           <button onClick={() => setStatus("detail")}>Cancel</button>
-          <ProductForm onSubmit={handleChange} prevProduct={data} />
+          <ProductForm
+            onUpdate={handleChange}
+            onCreate={handleChange}
+            prevProduct={data}
+          />
         </>
       );
     }

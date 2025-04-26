@@ -3,14 +3,14 @@ import { Product } from "./Product";
 
 export interface Props {
   products: Product[];
-  onDelete: () => Promise<void>;
+  onDelete: (product: Product) => void;
 }
 
 function ProductList({ products, onDelete }: Props) {
   const url = "http://localhost:8000/inventory/products";
   async function handleDelete(product: Product) {
     await fetch(url + "/" + product.id, { method: "DELETE" });
-    onDelete();
+    onDelete(product);
   }
   return (
     <div className="list">

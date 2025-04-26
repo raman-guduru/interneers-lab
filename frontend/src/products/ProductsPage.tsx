@@ -26,9 +26,23 @@ function ProductsPage() {
       setLoading(false);
     }
   };
-  async function handleChange() {
+  function handleCreate(product: Product) {
     setStatus("list");
-    fetchData();
+    setData((data) => {
+      return [...data, product];
+    });
+  }
+  function handleUpdate(product: Product) {
+    setStatus("list");
+    setData((data) => {
+      return data.map((item) => (item.id === product.id ? product : item));
+    });
+  }
+  function handleDelete(product: Product) {
+    setStatus("list");
+    setData((data) => {
+      return data.filter((item) => item.id !== product.id);
+    });
   }
   useEffect(() => {
     fetchData();
@@ -58,10 +72,14 @@ function ProductsPage() {
             <button onClick={() => setStatus("list")}>
               <p className="fa-solid fa-times"></p> Cancel
             </button>
-            <ProductForm onSubmit={handleChange} prevProduct={null} />
+            <ProductForm
+              onCreate={handleCreate}
+              onUpdate={handleUpdate}
+              prevProduct={null}
+            />
           </>
         )}
-        <ProductList products={data} onDelete={handleChange} />
+        <ProductList products={data} onDelete={handleDelete} />
       </>
     );
   }

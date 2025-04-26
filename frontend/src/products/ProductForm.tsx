@@ -2,11 +2,12 @@ import { Product } from "./Product";
 import { SyntheticEvent, useState } from "react";
 
 export interface Props {
-  onSubmit: () => void;
+  onUpdate: (product: Product) => void;
+  onCreate: (product: Product) => void;
   prevProduct: Product | null;
 }
 
-function ProductForm({ onSubmit, prevProduct }: Props) {
+function ProductForm({ onUpdate, onCreate, prevProduct }: Props) {
   const url = "http://localhost:8000/inventory/products";
   const [error, setError] = useState<string>("");
   const [product, setProduct] = useState<Product>(
@@ -39,7 +40,8 @@ function ProductForm({ onSubmit, prevProduct }: Props) {
           setError(res);
           throw new Error();
         }
-        onSubmit();
+        const res = new Product(await response.json());
+        onCreate(res);
       } catch (err: any) {
         // setError(err.message);
       }
@@ -47,7 +49,7 @@ function ProductForm({ onSubmit, prevProduct }: Props) {
       try {
         console.log(product);
         const response = await fetch(url + "/" + product.id, {
-          method: "PUT",
+          method: "PATCH",
           body: JSON.stringify(product),
           headers: { "Content-Type": "application/json" },
         });
@@ -56,7 +58,8 @@ function ProductForm({ onSubmit, prevProduct }: Props) {
           setError(res);
           throw new Error();
         }
-        onSubmit();
+        const res = new Product(await response.json());
+        onUpdate(res);
       } catch (err: any) {
         // setError(err.message);
       }
