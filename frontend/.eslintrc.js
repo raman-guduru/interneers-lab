@@ -8,9 +8,8 @@ module.exports = {
     "prettier/prettier": [
       "error",
       {
-        "endOfLine":"auto"
-      }
-    ] // This will display prettier errors as ESLint errors. The 'error' severity means that these errors will cause your build to fail. You can change this to 'warn' if you prefer.
-
+        endOfLine: "auto",
+      },
+    ], // This will display prettier errors as ESLint errors. The 'error' severity means that these errors will cause your build to fail. You can change this to 'warn' if you prefer.
   },
 };
