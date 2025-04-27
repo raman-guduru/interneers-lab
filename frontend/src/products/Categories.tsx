@@ -85,7 +85,7 @@ function Categories({ product }: Props) {
     return <div>Error: {error.message}</div>;
   }
 
-  if (data)
+  if (data) {
     return (
       <>
         <div className="type-list">
@@ -114,11 +114,15 @@ function Categories({ product }: Props) {
                 onChange={handleChange}
               >
                 <option value="">select category to add</option>
-                {cats.map((cat) => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.name}
-                  </option>
-                ))}
+                {cats
+                  .filter((cat) => {
+                    return data.every((item) => item.id !== cat.id);
+                  })
+                  .map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.name}
+                    </option>
+                  ))}
               </select>
               <div>
                 <button onClick={handleAdd}>
@@ -133,6 +137,7 @@ function Categories({ product }: Props) {
         </div>
       </>
     );
+  }
 
   return null;
 }
