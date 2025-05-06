@@ -1,6 +1,6 @@
 main {
   background-color: #000000;
-  height: 100%;
+  flex-grow: 1;
   margin: 0%;
   padding: 10px;
   color: #fbf8ef;
@@ -8,6 +8,7 @@ main {
   flex-direction: column;
   align-items: center;
   color-scheme: dark;
+  overflow: auto;
 }
 
 nav {
@@ -18,6 +19,24 @@ nav {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 3px #222222;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 25%;
+  background-color: #111111;
+  margin: 0;
+  padding: 10px;
+  border: 2px solid #222222;
+}
+
+.with-sidebar {
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  flex-grow: 1;
 }
 
 .link {
@@ -35,6 +54,9 @@ a {
   text-decoration: none;
   margin: 10px;
   color: inherit;
+  p {
+    display: inline;
+  }
 }
 
 p,
@@ -91,7 +113,7 @@ textarea {
   box-shadow: none;
   border: black 0.1px solid;
   border-bottom: #169976 0.3px dotted;
-//   border-radius: 25px;
+  //   border-radius: 25px;
   padding: 3px;
   margin: 10px 0;
   &:focus {
@@ -125,6 +147,7 @@ span {
 hr {
   border-color: #000000;
   margin: 0;
+  width: 100%;
 }
 
 .prod-list-container {
@@ -148,6 +171,28 @@ hr {
   justify-content: center;
 }
 
+.cat-list {
+  display: flex;
+  cursor: pointer;
+  background-color: #111111;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3px 10px;
+  padding: 3px;
+  width: 100%;
+  p,
+  h4 {
+    padding: 0;
+    margin: 0;
+  }
+  button {
+    margin: 0;
+  }
+  span {
+    padding: 0;
+  }
+}
+
 .detail-container {
   background-color: #222222;
   text-align: center;
@@ -155,6 +200,7 @@ hr {
   // padding: 10px;
   border-radius: 10px;
   width: 300px;
+  height: fit-content;
 }
 
 .row {
@@ -164,13 +210,46 @@ hr {
 }
 
 .list {
-  width: 100%;
   padding: 10px;
   margin: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  overflow: auto;
+  flex-grow: 1;
+  min-width: 60%;
+  &::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #222222;
+    box-shadow: inset 0 0 6px #169976;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #169976;
+    box-shadow: inset 0 0 6px #000000;
+    border-radius: 10px;
+  }
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.wrap-item {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  margin: 10px;
+  background-color: #111111;
 }
 
 .type-list {
@@ -208,6 +287,19 @@ select {
 .type:hover {
   border-color: red;
   color: red;
+}
+
+.red:hover {
+  background-color: rgb(250, 102, 102);
+  box-shadow: inset -3px -3px red;
+  &:active {
+    background-color: red;
+    box-shadow: none;
+  }
+}
+
+.green {
+  color: #1dcd9f;
 }
 
 body::-webkit-scrollbar {

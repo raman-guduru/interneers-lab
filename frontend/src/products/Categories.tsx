@@ -119,7 +119,7 @@ function Categories({ product }: Props) {
                     return data.every((item) => item.id !== cat.id);
                   })
                   .map((cat) => (
-                    <option key={cat.id} value={cat.id}>
+                    <option key={cat.id} value={cat.id ? cat.id : ""}>
                       {cat.name}
                     </option>
                   ))}

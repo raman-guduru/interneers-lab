@@ -7,7 +7,7 @@ export interface Props {
 function ProductDetail({ product }: Props) {
   return (
     <>
-      <h2>{product.name || "N/A"}</h2>
+      {/* <h2>{product.name || "N/A"}</h2> */}
       <div className="detail-container">
         <div className="row">
           <span>Name</span>

@@ -1,10 +1,10 @@
 export class Category {
-  id: string = "";
+  id: string | null = "";
   name: string | null = null;
   description: string | null = null;
 
   constructor(initializer?: {
-    id: string;
+    id: string | null;
     name: string | null;
     description: string | null;
   }) {

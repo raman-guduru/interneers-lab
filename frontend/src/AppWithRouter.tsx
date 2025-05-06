@@ -2,6 +2,7 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 import ProductsPage from "./products/ProductsPage";
 import ProductPage from "products/ProductPage";
 import "./AppWithRouter.scss";
+import CategoriesPage from "products/CategoriesPage";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="products" element={<ProductsPage />} />
         <Route path="products/:id" element={<ProductPage />} />
+        <Route path="categories" element={<CategoriesPage />} />
         <Route path="*" element={<NoMatch />} />
       </Route>
     </Routes>
@@ -27,7 +29,10 @@ function Layout() {
         </div>
         <div>
           <Link to="/products" className="link">
-            Products
+            <p>Products</p>
+          </Link>
+          <Link to="/categories" className="link">
+            <p>Categories</p>
           </Link>
         </div>
       </nav>
@@ -44,6 +49,9 @@ function Home() {
       <h2>Home</h2>
       <Link to="/products" className="link">
         <button>Products</button>
+      </Link>
+      <Link to="/categories" className="link">
+        <button>Categories</button>
       </Link>
     </div>
   );

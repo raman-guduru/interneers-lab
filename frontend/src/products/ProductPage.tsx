@@ -48,6 +48,7 @@ function ProductPage() {
     if (status === "detail") {
       return (
         <>
+          <h2>{data.name}</h2>
           <ProductDetail product={data} />
           <button onClick={() => setStatus("form")} aria-label="edit">
             <p className="fa-solid fa-edit fa-lg"></p>
