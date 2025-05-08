@@ -26,6 +26,7 @@ function ProductList({ products, onDelete }: Props) {
             <button
               aria-label="delete product"
               onClick={() => handleDelete(product)}
+              className="red"
             >
               <p className="fa-solid fa-trash"></p>
             </button>

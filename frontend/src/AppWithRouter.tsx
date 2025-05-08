@@ -2,7 +2,7 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 import ProductsPage from "./products/ProductsPage";
 import ProductPage from "products/ProductPage";
 import "./AppWithRouter.scss";
-import CategoriesPage from "products/CategoriesPage";
+import CategoriesPage from "categories/CategoriesPage";
 
 export default function App() {
   return (

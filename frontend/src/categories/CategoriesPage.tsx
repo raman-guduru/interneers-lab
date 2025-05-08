@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Category } from "./Category";
-import CategoryForm from "./CategoryForm";
-import { Product } from "./Product";
-import ProductDetail from "./ProductDetail";
+import { Category } from "../products/Category";
+import CategoryForm from "../products/CategoryForm";
+import { Product } from "../products/Product";
+import ProductDetail from "../products/ProductDetail";
 import { Link } from "react-router-dom";
 
 function CategoriesPage() {
@@ -184,6 +184,7 @@ function CategoriesPage() {
                       onClick={() => {
                         handleDelete(category);
                       }}
+                      className="red"
                     >
                       <p className="fa-solid fa-trash"></p>
                     </button>
